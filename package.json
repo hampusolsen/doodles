@@ -1,0 +1,23 @@
+{
+  "name": "doodles",
+  "version": "1.0.0",
+  "description": "A bunch of CSS doodles by Hampus W. Olsen",
+  "private": true,
+  "scripts": {
+    "build": "webpack"
+  },
+  "keywords": [
+    "css",
+    "sass",
+    "doodles",
+    "webpack"
+  ],
+  "author": "Hampus W. Olsen",
+  "license": "ISC",
+  "devDependencies": {
+    "css-loader": "^6.2.0",
+    "sass": "^1.39.2",
+    "sass-loader": "^12.1.0",
+    "style-loader": "^3.2.1"
+  }
+}
