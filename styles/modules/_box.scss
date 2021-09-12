@@ -1,7 +1,7 @@
 @use "../abstracts/" as a;
 @use "../utilities/" as u;
 
-$size: 48px;
+$-size: 48px;
 
 $sides: (
     front: (
@@ -31,17 +31,15 @@ $sides: (
 );
 
 #box {
-    display: grid;
-    place-content: center;
     background-color: #faf3dd;
-    font-size: $size;
+    font-size: $-size;
     perspective: 5em;
     perspective-origin: 50% calc(50% - 1em);
 
     .box {
-        transform-style: preserve-3d;
         position: absolute;
         top: -1em; left: -1em;
+        width: 2em; height: 2em;
     }
 
     .scene {
@@ -53,10 +51,7 @@ $sides: (
         }
     }
 
-    .side {
-        position: absolute;
-        width: 2em; height: 2em;
-
+    .plane {
         @each $side, $attributes in $sides {
             &--#{$side} {
                 @each $attribute, $value in $attributes {
