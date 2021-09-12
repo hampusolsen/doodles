@@ -1,0 +1,68 @@
+@use "../abstracts/" as a;
+@use "../utilities/" as u;
+
+$size: 48px;
+
+$sides: (
+    front: (
+        background-color: #99e2b4,
+        transform: translateZ(1em)
+    ),
+    back: (
+        background-color: #88d4ab,
+        transform: translateZ(-1em)
+    ),
+    right: (
+        background-color: #78c6a3,
+        transform: translateX(1em) rotateY(90deg)
+    ),
+    left: (
+        background-color: #67b99a,
+        transform: translateX(-1em) rotateY(90deg)
+    ),
+    top: (
+        background-color: #56ab91,
+        transform: translateY(-1em) rotateX(90deg)
+    ),
+    bottom: (
+        background-color: #469d89,
+        transform: translateY(1em) rotateX(90deg)
+    ),
+);
+
+#box {
+    display: grid;
+    place-content: center;
+    background-color: #faf3dd;
+    font-size: $size;
+    perspective: 5em;
+    perspective-origin: 50% calc(50% - 1em);
+
+    .box {
+        transform-style: preserve-3d;
+        position: absolute;
+        top: -1em; left: -1em;
+    }
+
+    .scene {
+        animation: rotate-box 3200ms infinite linear;
+
+        @keyframes rotate-box {
+            from { transform: rotate3d(1, 1, 1, 0deg); }
+            to { transform: rotate3d(1, 1, 1, 360deg); }
+        }
+    }
+
+    .side {
+        position: absolute;
+        width: 2em; height: 2em;
+
+        @each $side, $attributes in $sides {
+            &--#{$side} {
+                @each $attribute, $value in $attributes {
+                    #{$attribute}: $value;
+                }
+            }
+        }
+    }
+}

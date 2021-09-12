@@ -1,0 +1,13 @@
+@mixin top-left-50 ($withTransform: true, $offset: 0) {
+    @if $offset != 0 {
+        top: calc(50% - #{$offset} / 2);
+        left: calc(50% - #{$offset} / 2);
+    } @else {
+        top: 50%;
+        left: 50%;
+    }
+
+    @if $withTransform {
+        transform: translate(-50%, -50%);
+    }    
+}
