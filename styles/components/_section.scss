@@ -1,5 +1,6 @@
 .section {
-    height: min(100vh, 720px);
+    height: 100vh;
     display: grid;
     place-content: center;
+    overflow: hidden;
 }

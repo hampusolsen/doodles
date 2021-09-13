@@ -1,0 +1,70 @@
+$darkblue: dodgerblue;
+$lightblue: lightblue;
+$transparent: #fff0;
+
+%waves {
+    position: absolute;
+    height: 1em; width: 200%;
+    background-size: 1em 1em;
+    background-repeat: repeat-x;
+    background-image: radial-gradient(at 50% 50%,
+        $darkblue, $darkblue 10%,
+        $lightblue 10%, $lightblue 15%,
+        $darkblue 15%, $darkblue 25%,
+        $lightblue 25%, $lightblue 30%,
+        $darkblue 30%, $darkblue 40%,
+        $lightblue 40%, $lightblue 45%,
+        $darkblue 45%, $darkblue 55%,
+        $lightblue 55%, $lightblue 60%,
+        $darkblue 60%, $darkblue 70%,
+        $transparent 70%
+    );
+}
+
+$animated-waves:
+    3 30 3 running,
+    7 35 1 reverse,
+    9 45 5 running,
+    21 40 0 running;
+
+#ocean {
+    position: relative;
+    font-size: 80px;
+    background-color: $darkblue;
+    .waves {
+        @extend %waves;
+
+        &:after {
+            content: "";
+            @extend %waves;
+
+        }
+
+        @for $i from 1 through 30 {
+            &:nth-child(#{$i}) {
+                top: #{($i - 2) * 0.5}em;
+                z-index: #{($i - 1) * 2};
+
+                &:after {
+                    left: -.5em;
+                    top: .2em;
+                    z-index: #{($i - 1) * 2 + 1};
+                }
+            }
+        }
+
+        @each $n, $duration, $delay, $direction in $animated-waves {
+            &:nth-child(#{$n}):after {
+                animation: roll-waves #{$duration * 1.5}s #{$delay}s linear infinite #{$direction} ;
+            }
+        }
+    }
+}
+
+@keyframes roll-waves {
+    0% { transform: translate(0%, 0%) }
+    25% { transform: translate(-12.5%, 7%) }
+    50% { transform: translate(-25%, -7%) }
+    75% { transform: translate(-37.5%, 7%) }
+    100% { transform: translate(-50%, 0%) }
+}
