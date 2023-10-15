@@ -135,8 +135,11 @@ $-palette-600: #1e1e2e;
     .guard {
         position: absolute;
         top: -.5em; left: -.5em;
+        transform-style: preserve-3d;
+
         .plane {
             background-color: $-palette-400;
+
             &--top {
                 height: 1em; width: 2.5em;
                 transform-origin: top;
@@ -177,10 +180,9 @@ $-palette-600: #1e1e2e;
     .lens {
         position: absolute;
         top: 0; left: 0;
-
+        transform-style: preserve-3d;
+        
         .plane {
-            transform-style: preserve-3d;
-
             &--back {
                 background-color: $-palette-600;
                 height: 1.5em; width: 1.5em;
