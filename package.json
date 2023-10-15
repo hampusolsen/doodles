@@ -4,18 +4,20 @@
   "description": "A bunch of CSS doodles by Hampus W. Olsen",
   "private": true,
   "scripts": {
-    "build": "webpack"
+    "start": "parcel serve index.html"
   },
   "keywords": [
     "css",
     "sass",
     "doodles",
-    "webpack"
+    "parcel"
   ],
   "author": "Hampus W. Olsen",
   "license": "ISC",
   "devDependencies": {
+    "@parcel/transformer-sass": "^2.10.0",
     "css-loader": "^6.2.0",
+    "parcel": "^2.10.0",
     "sass": "^1.39.2",
     "sass-loader": "^12.1.0",
     "style-loader": "^3.2.1"
